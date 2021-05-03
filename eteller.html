@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+</head>
+<script type="text/javascript" src="bootstrap4/node_modules/jquery/dist/jquery.js">
+</script>
+<script type="text/javascript">
+	// alert(prt.value);
+	// $(function(){
+	// 	$("#addo").click(function(){
+	// 		var next = 
+	// 		})
+		
+	// })
+
+
+
+	// function cool()
+	// {
+	// 	alert(prt.value);
+	// }
+	//onclick='cool()'
+	// id='delb'
+	$(function(){
+	
+		
+	
+		$("#addo").click(function(){
+			// alert($('table tr').length);
+			$("#wowi td").closest("tr").length;
+			var x = "<tr id='count'><td id='counte'></td><td><input type='text' id='nm'></td><td><input type='text' id='prt'></td><td><input type='text' id='qty'></td><td><input type='text' id='ttl' disabled></td><td><button class='btn-primary'>edit</button><button class='btn-danger' id='delo'>delete</button></td></tr>"
+			
+			$("tbody").append(x);
+			// trDisabled();
+			counter();
+			
+			
+
+			
+
+
+			// alert(prt.value);
+						
+				// 	if(d=="Asus")
+				// 	{
+				// 		$("#prt").val("10000");
+				// 	}
+				// 	else if(d=="Lenovo")
+				// 	{
+				// 		$("#prt").val("15000");
+				// 	}
+				// 	else if(d=="Dell")
+				// 	{
+				// 		$("#prt").val("25000");
+				// 	}
+				// 	else
+				// 	{
+				// 		$("#prt").val("35000");
+				// 	}			
+				// }
+				 
+
+				
+				
+					
+			});
+		var trDisabled = function()
+		{
+			
+			// if($("#wowi td").closest("tr").length >= 2)
+			// {
+			// 	// alert("xool");
+			// 	$("tr").each(function(){
+
+			// 	// $("tr").prev().find("#nm").attr("readonly" , "readonly");
+			// 	// $("tr").prev().find("#prt").attr("readonly", "readonly");
+   //  //      		$("tr").prev().find("#qty").attr("readonly", "readonly");
+			// 	})
+			// 	alert("xool");
+
+			// 	$("tr").prev().find("#nm").attr("readonly" , "readonly");
+			// 	$("tr").prev().find("#prt").attr("readonly", "readonly");
+   //       		$("tr").prev().find("#qty").attr("readonly", "readonly");	
+			// }
+			
+		}
+			function counter()
+			{
+				var i = 0;
+				$("tr").each(function(){
+					console.log(i);
+					$(this).find("#counte").html(i);
+					i++;
+				})
+			}
+			
+		
+			
+		 
+		
+	
+		// $(".qty").keyup(function(){
+		// 	var qty = $(this).val();
+		// 	var price = $(this).closest("tr").find(".price").val();
+		// 	$(this).closest('tr').find('.total').val()
+		// })
+		var subTotal = function (){
+
+				$("tr").each(function(){
+
+					// var d = 
+					// var e = 
+					// var f = d*e;
+					// alert(f);
+			
+			
+			  		$(this).closest("tr").find("#ttl").val($(this).closest("tr").find("#prt").val() *
+			  			$(this).closest("tr").find("#qty").val());		
+				})
+				
+				 }
+				 var grandTotal = function()
+				 {
+				 	var grandTotal = 0 ;
+				 	$("tr").find("#ttl").each(function(){
+				 		var rtotal = Number($(this).closest(this).val()); 
+
+				 		grandTotal += rtotal ;
+				 		$(".gttl").text(grandTotal);
+				 		
+				 	})
+				 }
+				 // var del = function ()
+				 // {
+				 	
+				 // }
+
+
+
+		$(document).on("keyup" , "#qty" , function(){
+			subTotal();
+			grandTotal();
+
+		})
+		$(document).on("click" ,"#delo" , function(){
+			$(this).closest("tr").remove();
+			counter();
+			grandTotal();
+
+		})
+		
+	});
+
+	
+</script>
+<body>
+<table class="table" id="wowi">
+	<thead>
+		<tr>
+		<td>S/N</td>
+		<td>NAME</td>
+		<td>PRICE</td>
+		<td>QUANTITY</td>
+		<td>TOTAL</td>
+		<td>ACTION</td>
+	</tr>	
+	</thead>
+	<tbody></tbody>
+	
+</table>
+
+
+<button id="addo" class="btn-success"> + </button> <br><br>
+Grand Total: <span class="gttl"></span>
+</body>
+
+
+<script type="text/javascript" src="bootstrap4/js/bootstrap.js"></script>
+
+
+</html>
+
